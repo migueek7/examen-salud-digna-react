@@ -6,7 +6,7 @@ import './App.css'
 function App() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  // const onSubmit = data => console.log(data);
+
   
   const onSubmit = (data) => {
     console.log(data)
@@ -18,7 +18,6 @@ function App() {
       icon: 'success'
     })
   }
-  // console.log(watch("example"));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="card text-start form shadow">
@@ -102,8 +101,8 @@ function App() {
           {...register("telefono", { 
             required: true,
             pattern: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
-          }
-        )}/>
+          })}
+        />
         {errors?.telefono?.type === "required" && <span className='text-danger'>* Este campo es obligatorio</span>}
         {errors?.telefono?.type === "maxLength" && <span className='text-danger'>* El apellido excedio el maximo de 20 caracteres</span>}
         {errors?.telefono?.type === "pattern" && <span className='text-danger'>* Numero de teléfono inválido</span>}
